@@ -39,7 +39,7 @@ def calcular_distancia(origen, destino, transporte):
     millas = km * 0.621371
     horas = duracion_s / 3600
 
-    return km, millas, horas
+    return km, millas, horas, modo.replace("-", " ")
 
 # Programa principal
 while True:
@@ -52,10 +52,17 @@ while True:
     transporte = input("Seleccione transporte (auto, bici, caminando): ").strip()
 
     try:
-        km, mi, hrs = calcular_distancia(origen, destino, transporte)
+        km, mi, hrs, modo = calcular_distancia(origen, destino, transporte)
         print(f"\n📍 De {origen} a {destino} en {transporte}:")
-        print(f"📏 {round(km, 2)} km / {round(mi, 2)} millas")
+        print(f"📏 Distancia: {round(km, 2)} km / {round(mi, 2)} millas")
         print(f"⏱️  Duración estimada: {round(hrs, 2)} horas")
-        print(f"📝 Narrativa: Viaje desde {origen} hacia {destino} utilizando {transporte}")
+        
+        # 📝 Narrativa del viaje
+        print("\n📝 Narrativa del Viaje:")
+        print(f"Desde la ciudad de {origen}, ubicada en Chile, emprenderás un viaje hacia {destino}, en Argentina, utilizando el medio de transporte seleccionado: {transporte}.")
+        print(f"El recorrido tiene una distancia aproximada de {round(km, 2)} kilómetros, lo que equivale a {round(mi, 2)} millas.")
+        print(f"La duración estimada del viaje es de alrededor de {round(hrs, 2)} horas considerando condiciones normales en la ruta.")
+        print("Disfruta del trayecto y ten un buen viaje.\n")
+        
     except Exception as e:
         print(f"❌ Error al calcular: {e}")
